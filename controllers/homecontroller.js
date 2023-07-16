@@ -3,7 +3,12 @@ const fs = require('fs');
 const Appointment = require('../models/appointment');
 
 module.exports.getHomeController = (req, res) => {
-    res.sendFile(path.join(__dirname, '/..', '/views', '/index.html'))
+    Appointment.findAll()
+        .then(appointment=>{
+            console.log(appointment);
+            res.sendFile(path.join(__dirname, '/..', '/views', '/index.html'))
+        })
+        .catch(err=>console.log(err));
 };
 
 module.exports.postHomeController = (req, res) => {
@@ -21,5 +26,4 @@ module.exports.postHomeController = (req, res) => {
             res.sendFile(path.join(__dirname, '..', 'views', 'index.html'))
         })
         .catch(err=>console.log(err));
-    // fs.appendFileSync('detail.txt', `${req.body.name} : ${req.body.email}, `)
 };

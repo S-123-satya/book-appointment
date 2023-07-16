@@ -14,19 +14,10 @@ const app=express();
 app.use(homeRoute)
 app.use(contactUsRoute)
 // sequelize.sync()
-Appointment.sync()
-.then(()=>console.log('table created'))
-   .catch( (error) =>{
-    console.error('Unable to connect to the database:', error);
-  });
-const sample_appointment={
-  name:'satya',
-  email:'satay@gmainl.com',
-  phone:'4564567',
-  date: '2023-07-20',
-  time: '11:38'
-}
-Appointment.create(sample_appointment)
-  .then(result=>console.log(result))
-  .catch(err=>console.log(err));
+// Appointment.sync({force:true})
+// .then(()=>console.log('table created'))
+//    .catch( (error) =>{
+//     console.error('Unable to connect to the database:', error);
+//   });
+
 app.listen(3000,()=>console.log('listening on port 3000'));
